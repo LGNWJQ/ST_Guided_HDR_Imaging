@@ -6,6 +6,7 @@ import pytorch_lightning as pl
 import cv2
 from torchmetrics.image import PeakSignalNoiseRatio as PSNR
 from torchmetrics.image import StructuralSimilarityIndexMeasure as SSIM
+from torchmetrics.image import LearnedPerceptualImagePatchSimilarity as LPIPS
 from torchvision.utils import make_grid
 '''
 Feature extraction network and HDR reconstruction network
