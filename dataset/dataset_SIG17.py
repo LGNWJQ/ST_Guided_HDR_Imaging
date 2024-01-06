@@ -227,7 +227,7 @@ def print_info(x):
 if __name__ == "__main__":
     dataset_path = "D:/BASIC_FILE/DT/My_Dataset/TEST/"
     patch_size = 512
-    isTraining = False
+    isTraining = True
     edge_type = None
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
