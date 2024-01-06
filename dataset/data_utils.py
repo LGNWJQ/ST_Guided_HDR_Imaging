@@ -2,6 +2,11 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+def Normalize_neg_one_to_one(img):
+    return img * 2 - 1
+
+def Unnormalize_zero_to_one(normed_img):
+    return (normed_img + 1) * 0.5
 
 def Gamma_Correction_HtoL(image, gamma=2.2):
     return torch.pow(image, 1 / gamma)

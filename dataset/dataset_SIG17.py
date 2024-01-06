@@ -1,9 +1,10 @@
 import torch
 from torch.utils.data import Dataset, DataLoader
+
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 import pytorch_lightning as pl
-import dataset.data_utils as utils
+from dataset import utils
 
 import os
 import imageio
@@ -105,6 +106,8 @@ class SIG17_Dataset(Dataset):
     - patch_size:   训练时图像裁剪大小
     - isTraining:   是否是训练集
     - edge_type:    第七通道类型
+    batch:
+    均为float32的动态范围为[0, 1]的对齐的图像
     """
 
     def __init__(self, dataset_path, patch_size, isTraining=True, edge_type=None):
