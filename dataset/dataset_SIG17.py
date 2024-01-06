@@ -114,7 +114,6 @@ class SIG17_Dataset(Dataset):
         self.data_folder_list = [folder for folder in data_folder_list
                                  if os.path.exists(os.path.join(self.dataset_path, folder, 'HDRImg.hdr'))]
         # 数据增强
-        self.ToFloat = A.ToFloat(max_value=65535.0)
         self.train_transform = A.Compose(
             [
                 A.RandomCrop(width=patch_size, height=patch_size),
@@ -163,16 +162,14 @@ class SIG17_Dataset(Dataset):
         ev_file_path = os.path.join(data_folder, file_list[4])
 
         # 读取为numpy, 统一数据类型为0-1的float32
-        ldr_image1 = imageio.v2.imread(ldr1_path) / 65535.0
-        ldr_image2 = imageio.v2.imread(ldr2_path) / 65535.0
+        ldr_image1 = imageio.v2.imread(ldr1_path).astype("float32") / 65535.0
+        ldr_image2 = imageio.v2.imread(ldr2_path).astype("float32") / 65535.0
         hdr_image = imageio.v2.imread(hdr_path, format='HDR-FI')
-        hdr_tmap_image = imageio.v2.imread(hdr_tmap_path) / 65535.0
+        hdr_tmap_image = imageio.v2.imread(hdr_tmap_path).astype("float32") / 65535.0
         # expo_value = np.loadtxt(ev_file_path, dtype=np.float32)
         # expo_value = torch.from_numpy(expo_value)
 
         # 数据处理：统一数据类型为0-1的float32，数据增强，转化为tensor
-        # ldr_image1 = self.ToFloat(image=ldr_image1)['image']
-        # ldr_image2 = self.ToFloat(image=ldr_image2)['image']
         augmentations = self.transform(
             image=hdr_image,
             image1=ldr_image1,
