@@ -6,8 +6,8 @@ def set_config():
     parser.add_argument('--github_link', type=str, default="https://github.com/LGNWJQ/", help="Author's github repository")
 
     # 数据集相关
-    parser.add_argument('--training_dataset_path', type=str, default='D:/IEEE_SPL/HDR_DATA/TRAIN/', help='训练集的路径')
-    parser.add_argument('--val_dataset_path', type=str, default='D:/IEEE_SPL/HDR_DATA/TEST/', help='验证集的路径')
+    parser.add_argument('--training_dataset_path', type=str, default='D:/BASIC_FILE/DT/My_Dataset/TEST/', help='训练集的路径')
+    parser.add_argument('--val_dataset_path', type=str, default='D:/BASIC_FILE/DT/My_Dataset/TEST/', help='验证集的路径')
     parser.add_argument('--patch_size', type=int, default=256, help='训练时图像裁剪patch大小')
     parser.add_argument('--val_patch_size', type=int, default=512, help='验证时图像裁剪patch大小')
     parser.add_argument('--batch_size', type=int, default=4, help='训练批量大小')
